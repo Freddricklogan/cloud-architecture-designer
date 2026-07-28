@@ -1,67 +1,83 @@
-# Cloud Architecture Designer
+<h1 align="center">Cloud Architecture Designer</h1>
 
-An interactive, drag-and-drop cloud architecture diagramming tool for designing AWS infrastructure. Includes pre-built templates, cost estimation, and AWS Well-Architected Framework review. Single-page web application — no installation required.
+<p align="center">
+  <em>A drag-and-drop AWS architecture canvas with cost estimation and a Well-Architected review — design cloud systems in the browser.</em>
+</p>
+
+<p align="center">
+  <a href="https://freddricklogan.github.io/cloud-architecture-designer/"><img src="https://img.shields.io/badge/Live_Demo-Open_App-ff9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="Live Demo"></a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/AWS-Architecture-232f3e?logo=amazonaws&logoColor=ff9900" alt="AWS">
+  <img src="https://img.shields.io/badge/JavaScript-Vanilla_ES6-f7df1e?logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Rendering-HTML5_Canvas-00b894" alt="Canvas">
+  <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="License">
+</p>
+
+---
+
+## Overview
+
+**Cloud Architecture Designer** is an interactive tool for sketching AWS solution architectures the
+way you would on a whiteboard — but with the guardrails of real cloud practice built in. Drag
+services onto a canvas, connect them, start from pre-built reference templates, get a running **cost
+estimate**, and run a **Well-Architected Framework** review against your design.
+
+It turns architecture from a static diagram into a living model that reasons about cost and best
+practice, demonstrating both cloud fluency and the product sense to package that expertise into a
+usable tool.
+
+> **▶ [Launch the live demo](https://freddricklogan.github.io/cloud-architecture-designer/)**
+
+---
+
+## Why this project
+
+| Skill demonstrated | Where it shows up |
+|:--|:--|
+| **AWS solution architecture** | Service catalog, reference templates, real architecture patterns |
+| **Well-Architected thinking** | Built-in review across the framework’s pillars |
+| **FinOps / cost awareness** | Live cost estimation as the design changes |
+| **Interactive canvas engineering** | Drag-and-drop, connections, and hit-testing on HTML5 Canvas |
+| **Product design** | Turning cloud expertise into an approachable, self-serve tool |
+
+---
 
 ## Features
 
-### Visual Architecture Builder
-- Drag-and-drop cloud service components onto an interactive canvas
-- Draw connections between services (Shift+click two nodes)
-- Move, select, and delete components
-- Snap-to-grid alignment for clean layouts
+- **Drag-and-drop canvas** for composing AWS architectures
+- **Pre-built templates** to start from proven patterns
+- **Cost estimation** that updates as you build
+- **Well-Architected Framework review** to surface risks and improvements
+- Fully client-side — nothing to install
 
-### Component Library
-- **Compute** — EC2, Lambda, ECS, EKS
-- **Storage** — S3, EBS, EFS
-- **Database** — RDS, DynamoDB, ElastiCache, Redshift
-- **Networking** — VPC, ALB, CloudFront, Route 53, API Gateway
-- **Security** — IAM, WAF, KMS
-- **Integration** — SQS, SNS, EventBridge, Step Functions
+---
 
-### Pre-Built Templates
-- **Three-Tier Web App** — Classic web architecture with load balancing and caching
-- **Serverless API** — API Gateway + Lambda + DynamoDB pattern
-- **Data Pipeline** — ETL workflow with S3, Lambda, SQS, and Redshift
-- **Microservices** — EKS-based containerized services with message queues
-- **Static Website + CDN** — S3 + CloudFront with WAF protection
+## Tech stack
 
-### Well-Architected Review
-- Automated review against AWS Well-Architected Framework pillars:
-  - Reliability, Security, Performance, Cost Optimization, Operational Excellence, Sustainability
-- Pass/warn/fail indicators with actionable recommendations
-- Updates dynamically as components are added
+- **Language:** Vanilla JavaScript (ES6+)
+- **Rendering:** HTML5 Canvas
+- **Runtime:** 100% client-side — no backend, no install
 
-### Cost Estimation
-- Real-time monthly cost projection based on selected components
-- Running total updates as architecture evolves
+---
 
-### Export
-- Export architecture diagram as PNG image
+## Run locally
 
-## Technologies
+```bash
+git clone https://github.com/Freddricklogan/cloud-architecture-designer.git
+cd cloud-architecture-designer
+python3 -m http.server 8000
+# then visit http://localhost:8000
+```
 
-- **HTML5 Canvas** — Interactive diagramming with drag-and-drop
-- **Vanilla JavaScript** — Component management, connections, and review logic
-- **CSS3** — Responsive layout with dark professional theme
-- **Client-Side Only** — No server dependencies
+---
 
-## How to Use
+## Author
 
-1. Open `index.html` in any modern browser
-2. **Drag** components from the left sidebar onto the canvas
-3. **Shift+click** two components to draw a connection between them
-4. **Double-click** a component to remove it
-5. Select a **template** from the dropdown for a pre-built starting point
-6. Click **Review Architecture** to see Well-Architected Framework analysis
-7. Click **Export PNG** to save the diagram
-
-## Use Cases
-
-- **Solutions Architecture** — Design and communicate cloud architectures
-- **Cloud Certification Study** — Practice AWS service selection and patterns
-- **Technical Interviews** — Whiteboard-style architecture design exercises
-- **Team Planning** — Quick architecture sketching during design sessions
+**Freddrick Logan** — Educational Technologist & Technology Leader
+[GitHub](https://github.com/Freddricklogan) · [LinkedIn](https://www.linkedin.com/in/freddricklogan/)
 
 ## License
 
-MIT License
+Released under the [MIT License](LICENSE).
