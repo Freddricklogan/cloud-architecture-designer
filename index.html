@@ -6,46 +6,46 @@
 <title>Cloud Architecture Designer</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0b0f0b;--bg2:#0b0f0b;--bg3:#0b100b;--accent:#2fbf5f;--text:#cdefd6;--text2:#7f9585;--danger:#cf5c4e;--warning:#d9a441;--success:#2fbf5f;--info:#2fbf5f;--purple:#2fbf5f;--radius:8px}
+:root{--bg:#001327;--bg2:#001327;--bg3:#001327;--accent:#35b56a;--text:#f4f3ef;--text2:#adc4e0;--danger:#e0705f;--warning:#c9a44e;--success:#35b56a;--info:#35b56a;--purple:#35b56a;--radius:8px}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
-.header{background:linear-gradient(135deg,var(--bg2),var(--bg3));padding:14px 24px;border-bottom:1px solid rgba(47, 191, 95,.1);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.header h1{font-size:1.3rem;color:#cdefd6}.header h1 span{color:var(--accent)}
+.header{background:linear-gradient(135deg,var(--bg2),var(--bg3));padding:14px 24px;border-bottom:1px solid rgba(53, 181, 106,.1);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.header h1{font-size:1.3rem;color:#f4f3ef}.header h1 span{color:var(--accent)}
 .toolbar{display:flex;gap:6px;align-items:center}
 .btn{padding:7px 14px;border:none;border-radius:var(--radius);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
-.btn-primary{background:var(--accent);color:var(--bg)}.btn-primary:hover{background:#2fbf5f}
-.btn-secondary{background:rgba(47, 191, 95,.1);color:var(--accent);border:1px solid rgba(47, 191, 95,.2)}
+.btn-primary{background:var(--accent);color:var(--bg)}.btn-primary:hover{background:#35b56a}
+.btn-secondary{background:rgba(53, 181, 106,.1);color:var(--accent);border:1px solid rgba(53, 181, 106,.2)}
 .btn-sm{padding:5px 10px;font-size:.75rem}
-select{padding:6px 10px;background:var(--bg);border:1px solid rgba(47, 191, 95,.15);border-radius:var(--radius);color:var(--text);font-size:.8rem}
+select{padding:6px 10px;background:var(--bg);border:1px solid rgba(53, 181, 106,.15);border-radius:var(--radius);color:var(--text);font-size:.8rem}
 .main{display:flex;flex:1;overflow:hidden}
-.sidebar{width:260px;background:var(--bg2);border-right:1px solid rgba(47, 191, 95,.08);overflow-y:auto;flex-shrink:0}
-.sidebar-section{padding:12px;border-bottom:1px solid rgba(47, 191, 95,.06)}
+.sidebar{width:260px;background:var(--bg2);border-right:1px solid rgba(53, 181, 106,.08);overflow-y:auto;flex-shrink:0}
+.sidebar-section{padding:12px;border-bottom:1px solid rgba(53, 181, 106,.06)}
 .sidebar-section h3{font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
 .component{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:var(--radius);cursor:grab;transition:background .2s;font-size:.8rem;user-select:none}
-.component:hover{background:rgba(47, 191, 95,.08)}
+.component:hover{background:rgba(53, 181, 106,.08)}
 .component:active{cursor:grabbing}
 .comp-icon{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0}
 .comp-name{font-size:.8rem}.comp-desc{font-size:.68rem;color:var(--text2)}
 .canvas-area{flex:1;position:relative;overflow:hidden}
 #canvas{width:100%;height:100%;cursor:crosshair}
-.right-panel{width:300px;background:var(--bg2);border-left:1px solid rgba(47, 191, 95,.08);overflow-y:auto;flex-shrink:0}
-.panel-section{padding:14px;border-bottom:1px solid rgba(47, 191, 95,.06)}
+.right-panel{width:300px;background:var(--bg2);border-left:1px solid rgba(53, 181, 106,.08);overflow-y:auto;flex-shrink:0}
+.panel-section{padding:14px;border-bottom:1px solid rgba(53, 181, 106,.06)}
 .panel-section h3{font-size:.78rem;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
 .prop-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:.8rem}
 .prop-row .label{color:var(--text2)}
 .prop-row .value{color:var(--text);font-weight:500}
 .checklist{list-style:none}
-.checklist li{padding:6px 0;font-size:.8rem;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(47, 191, 95,.04)}
+.checklist li{padding:6px 0;font-size:.8rem;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(53, 181, 106,.04)}
 .check-icon{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;flex-shrink:0}
-.check-pass{background:rgba(47, 191, 95,.15);color:var(--success)}
-.check-warn{background:rgba(217, 164, 65,.15);color:var(--warning)}
-.check-fail{background:rgba(207, 92, 78,.15);color:var(--danger)}
+.check-pass{background:rgba(53, 181, 106,.15);color:var(--success)}
+.check-warn{background:rgba(201, 164, 78,.15);color:var(--warning)}
+.check-fail{background:rgba(224, 112, 95,.15);color:var(--danger)}
 .cost-display{text-align:center;padding:16px;background:var(--bg);border-radius:var(--radius);margin-top:8px}
 .cost-display .amount{font-size:1.4rem;font-weight:700;color:var(--accent)}
 .cost-display .period{font-size:.72rem;color:var(--text2)}
 .template-grid{display:grid;grid-template-columns:1fr;gap:6px}
-.template-btn{padding:8px 10px;background:var(--bg);border:1px solid rgba(47, 191, 95,.1);border-radius:var(--radius);color:var(--text);font-size:.78rem;cursor:pointer;text-align:left;transition:all .2s}
-.template-btn:hover{border-color:var(--accent);background:rgba(47, 191, 95,.05)}
-.node-tooltip{position:absolute;background:var(--bg2);border:1px solid rgba(47, 191, 95,.2);border-radius:var(--radius);padding:10px 14px;font-size:.78rem;pointer-events:none;z-index:100;display:none;box-shadow:0 4px 12px rgba(11, 15, 11,.3)}
+.template-btn{padding:8px 10px;background:var(--bg);border:1px solid rgba(53, 181, 106,.1);border-radius:var(--radius);color:var(--text);font-size:.78rem;cursor:pointer;text-align:left;transition:all .2s}
+.template-btn:hover{border-color:var(--accent);background:rgba(53, 181, 106,.05)}
+.node-tooltip{position:absolute;background:var(--bg2);border:1px solid rgba(53, 181, 106,.2);border-radius:var(--radius);padding:10px 14px;font-size:.78rem;pointer-events:none;z-index:100;display:none;box-shadow:0 4px 12px rgba(0, 19, 39,.3)}
 </style>
 </head>
 <body>
@@ -69,44 +69,44 @@ select{padding:6px 10px;background:var(--bg);border:1px solid rgba(47, 191, 95,.
   <div class="sidebar">
     <div class="sidebar-section">
       <h3>Compute</h3>
-      <div class="component" draggable="true" data-type="ec2" data-cat="compute" data-cost="150"><div class="comp-icon" style="background:rgba(217, 164, 65,.2);color:#d9a441">EC2</div><div><div class="comp-name">EC2 Instance</div><div class="comp-desc">Virtual server</div></div></div>
-      <div class="component" draggable="true" data-type="lambda" data-cat="compute" data-cost="25"><div class="comp-icon" style="background:rgba(217, 164, 65,.2);color:#d9a441">&lambda;</div><div><div class="comp-name">Lambda</div><div class="comp-desc">Serverless function</div></div></div>
-      <div class="component" draggable="true" data-type="ecs" data-cat="compute" data-cost="200"><div class="comp-icon" style="background:rgba(217, 164, 65,.2);color:#d9a441">ECS</div><div><div class="comp-name">ECS</div><div class="comp-desc">Container service</div></div></div>
-      <div class="component" draggable="true" data-type="eks" data-cat="compute" data-cost="350"><div class="comp-icon" style="background:rgba(217, 164, 65,.2);color:#d9a441">EKS</div><div><div class="comp-name">EKS</div><div class="comp-desc">Kubernetes</div></div></div>
+      <div class="component" draggable="true" data-type="ec2" data-cat="compute" data-cost="150"><div class="comp-icon" style="background:rgba(201, 164, 78,.2);color:#c9a44e">EC2</div><div><div class="comp-name">EC2 Instance</div><div class="comp-desc">Virtual server</div></div></div>
+      <div class="component" draggable="true" data-type="lambda" data-cat="compute" data-cost="25"><div class="comp-icon" style="background:rgba(201, 164, 78,.2);color:#c9a44e">&lambda;</div><div><div class="comp-name">Lambda</div><div class="comp-desc">Serverless function</div></div></div>
+      <div class="component" draggable="true" data-type="ecs" data-cat="compute" data-cost="200"><div class="comp-icon" style="background:rgba(201, 164, 78,.2);color:#c9a44e">ECS</div><div><div class="comp-name">ECS</div><div class="comp-desc">Container service</div></div></div>
+      <div class="component" draggable="true" data-type="eks" data-cat="compute" data-cost="350"><div class="comp-icon" style="background:rgba(201, 164, 78,.2);color:#c9a44e">EKS</div><div><div class="comp-name">EKS</div><div class="comp-desc">Kubernetes</div></div></div>
     </div>
     <div class="sidebar-section">
       <h3>Storage</h3>
-      <div class="component" draggable="true" data-type="s3" data-cat="storage" data-cost="50"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--success)">S3</div><div><div class="comp-name">S3 Bucket</div><div class="comp-desc">Object storage</div></div></div>
-      <div class="component" draggable="true" data-type="ebs" data-cat="storage" data-cost="80"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--success)">EBS</div><div><div class="comp-name">EBS Volume</div><div class="comp-desc">Block storage</div></div></div>
-      <div class="component" draggable="true" data-type="efs" data-cat="storage" data-cost="120"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--success)">EFS</div><div><div class="comp-name">EFS</div><div class="comp-desc">File system</div></div></div>
+      <div class="component" draggable="true" data-type="s3" data-cat="storage" data-cost="50"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--success)">S3</div><div><div class="comp-name">S3 Bucket</div><div class="comp-desc">Object storage</div></div></div>
+      <div class="component" draggable="true" data-type="ebs" data-cat="storage" data-cost="80"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--success)">EBS</div><div><div class="comp-name">EBS Volume</div><div class="comp-desc">Block storage</div></div></div>
+      <div class="component" draggable="true" data-type="efs" data-cat="storage" data-cost="120"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--success)">EFS</div><div><div class="comp-name">EFS</div><div class="comp-desc">File system</div></div></div>
     </div>
     <div class="sidebar-section">
       <h3>Database</h3>
-      <div class="component" draggable="true" data-type="rds" data-cat="database" data-cost="300"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--info)">RDS</div><div><div class="comp-name">RDS</div><div class="comp-desc">Relational DB</div></div></div>
-      <div class="component" draggable="true" data-type="dynamodb" data-cat="database" data-cost="100"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--info)">DDB</div><div><div class="comp-name">DynamoDB</div><div class="comp-desc">NoSQL DB</div></div></div>
-      <div class="component" draggable="true" data-type="elasticache" data-cat="database" data-cost="180"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--info)">EC</div><div><div class="comp-name">ElastiCache</div><div class="comp-desc">In-memory cache</div></div></div>
-      <div class="component" draggable="true" data-type="redshift" data-cat="database" data-cost="500"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--info)">RS</div><div><div class="comp-name">Redshift</div><div class="comp-desc">Data warehouse</div></div></div>
+      <div class="component" draggable="true" data-type="rds" data-cat="database" data-cost="300"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--info)">RDS</div><div><div class="comp-name">RDS</div><div class="comp-desc">Relational DB</div></div></div>
+      <div class="component" draggable="true" data-type="dynamodb" data-cat="database" data-cost="100"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--info)">DDB</div><div><div class="comp-name">DynamoDB</div><div class="comp-desc">NoSQL DB</div></div></div>
+      <div class="component" draggable="true" data-type="elasticache" data-cat="database" data-cost="180"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--info)">EC</div><div><div class="comp-name">ElastiCache</div><div class="comp-desc">In-memory cache</div></div></div>
+      <div class="component" draggable="true" data-type="redshift" data-cat="database" data-cost="500"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--info)">RS</div><div><div class="comp-name">Redshift</div><div class="comp-desc">Data warehouse</div></div></div>
     </div>
     <div class="sidebar-section">
       <h3>Networking</h3>
-      <div class="component" draggable="true" data-type="vpc" data-cat="networking" data-cost="0"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--purple)">VPC</div><div><div class="comp-name">VPC</div><div class="comp-desc">Virtual network</div></div></div>
-      <div class="component" draggable="true" data-type="alb" data-cat="networking" data-cost="40"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--purple)">ALB</div><div><div class="comp-name">ALB</div><div class="comp-desc">Load balancer</div></div></div>
-      <div class="component" draggable="true" data-type="cloudfront" data-cat="networking" data-cost="60"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--purple)">CF</div><div><div class="comp-name">CloudFront</div><div class="comp-desc">CDN</div></div></div>
-      <div class="component" draggable="true" data-type="route53" data-cat="networking" data-cost="5"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--purple)">R53</div><div><div class="comp-name">Route 53</div><div class="comp-desc">DNS</div></div></div>
-      <div class="component" draggable="true" data-type="apigw" data-cat="networking" data-cost="35"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--purple)">API</div><div><div class="comp-name">API Gateway</div><div class="comp-desc">API management</div></div></div>
+      <div class="component" draggable="true" data-type="vpc" data-cat="networking" data-cost="0"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--purple)">VPC</div><div><div class="comp-name">VPC</div><div class="comp-desc">Virtual network</div></div></div>
+      <div class="component" draggable="true" data-type="alb" data-cat="networking" data-cost="40"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--purple)">ALB</div><div><div class="comp-name">ALB</div><div class="comp-desc">Load balancer</div></div></div>
+      <div class="component" draggable="true" data-type="cloudfront" data-cat="networking" data-cost="60"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--purple)">CF</div><div><div class="comp-name">CloudFront</div><div class="comp-desc">CDN</div></div></div>
+      <div class="component" draggable="true" data-type="route53" data-cat="networking" data-cost="5"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--purple)">R53</div><div><div class="comp-name">Route 53</div><div class="comp-desc">DNS</div></div></div>
+      <div class="component" draggable="true" data-type="apigw" data-cat="networking" data-cost="35"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--purple)">API</div><div><div class="comp-name">API Gateway</div><div class="comp-desc">API management</div></div></div>
     </div>
     <div class="sidebar-section">
       <h3>Security</h3>
-      <div class="component" draggable="true" data-type="iam" data-cat="security" data-cost="0"><div class="comp-icon" style="background:rgba(207, 92, 78,.2);color:var(--danger)">IAM</div><div><div class="comp-name">IAM</div><div class="comp-desc">Identity & access</div></div></div>
-      <div class="component" draggable="true" data-type="waf" data-cat="security" data-cost="30"><div class="comp-icon" style="background:rgba(207, 92, 78,.2);color:var(--danger)">WAF</div><div><div class="comp-name">WAF</div><div class="comp-desc">Web firewall</div></div></div>
-      <div class="component" draggable="true" data-type="kms" data-cat="security" data-cost="10"><div class="comp-icon" style="background:rgba(207, 92, 78,.2);color:var(--danger)">KMS</div><div><div class="comp-name">KMS</div><div class="comp-desc">Key management</div></div></div>
+      <div class="component" draggable="true" data-type="iam" data-cat="security" data-cost="0"><div class="comp-icon" style="background:rgba(224, 112, 95,.2);color:var(--danger)">IAM</div><div><div class="comp-name">IAM</div><div class="comp-desc">Identity & access</div></div></div>
+      <div class="component" draggable="true" data-type="waf" data-cat="security" data-cost="30"><div class="comp-icon" style="background:rgba(224, 112, 95,.2);color:var(--danger)">WAF</div><div><div class="comp-name">WAF</div><div class="comp-desc">Web firewall</div></div></div>
+      <div class="component" draggable="true" data-type="kms" data-cat="security" data-cost="10"><div class="comp-icon" style="background:rgba(224, 112, 95,.2);color:var(--danger)">KMS</div><div><div class="comp-name">KMS</div><div class="comp-desc">Key management</div></div></div>
     </div>
     <div class="sidebar-section">
       <h3>Integration</h3>
-      <div class="component" draggable="true" data-type="sqs" data-cat="integration" data-cost="15"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--accent)">SQS</div><div><div class="comp-name">SQS</div><div class="comp-desc">Message queue</div></div></div>
-      <div class="component" draggable="true" data-type="sns" data-cat="integration" data-cost="10"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--accent)">SNS</div><div><div class="comp-name">SNS</div><div class="comp-desc">Notifications</div></div></div>
-      <div class="component" draggable="true" data-type="eventbridge" data-cat="integration" data-cost="20"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--accent)">EB</div><div><div class="comp-name">EventBridge</div><div class="comp-desc">Event bus</div></div></div>
-      <div class="component" draggable="true" data-type="stepfunctions" data-cat="integration" data-cost="30"><div class="comp-icon" style="background:rgba(47, 191, 95,.2);color:var(--accent)">SF</div><div><div class="comp-name">Step Functions</div><div class="comp-desc">Workflow orchestration</div></div></div>
+      <div class="component" draggable="true" data-type="sqs" data-cat="integration" data-cost="15"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--accent)">SQS</div><div><div class="comp-name">SQS</div><div class="comp-desc">Message queue</div></div></div>
+      <div class="component" draggable="true" data-type="sns" data-cat="integration" data-cost="10"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--accent)">SNS</div><div><div class="comp-name">SNS</div><div class="comp-desc">Notifications</div></div></div>
+      <div class="component" draggable="true" data-type="eventbridge" data-cat="integration" data-cost="20"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--accent)">EB</div><div><div class="comp-name">EventBridge</div><div class="comp-desc">Event bus</div></div></div>
+      <div class="component" draggable="true" data-type="stepfunctions" data-cat="integration" data-cost="30"><div class="comp-icon" style="background:rgba(53, 181, 106,.2);color:var(--accent)">SF</div><div><div class="comp-name">Step Functions</div><div class="comp-desc">Workflow orchestration</div></div></div>
     </div>
   </div>
   <div class="canvas-area">
@@ -138,7 +138,7 @@ const canvas=document.getElementById('canvas');
 const ctx=canvas.getContext('2d');
 let nodes=[],connections=[],selectedNode=null,draggingNode=null,connectingFrom=null;
 let dragOffsetX=0,dragOffsetY=0;
-const COLORS={compute:'#d9a441',storage:'#2fbf5f',database:'#2fbf5f',networking:'#2fbf5f',security:'#cf5c4e',integration:'#2fbf5f'};
+const COLORS={compute:'#c9a44e',storage:'#35b56a',database:'#35b56a',networking:'#35b56a',security:'#e0705f',integration:'#35b56a'};
 
 function resize(){canvas.width=canvas.parentElement.clientWidth;canvas.height=canvas.parentElement.clientHeight;draw()}
 window.addEventListener('resize',resize);
@@ -211,7 +211,7 @@ canvas.addEventListener('dblclick',e=>{
 function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   // Grid
-  ctx.strokeStyle='rgba(47, 191, 95,.03)';
+  ctx.strokeStyle='rgba(53, 181, 106,.03)';
   ctx.lineWidth=1;
   for(let x=0;x<canvas.width;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke()}
   for(let y=0;y<canvas.height;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke()}
@@ -221,7 +221,7 @@ function draw(){
     const to=nodes.find(n=>n.id===c.to);
     if(!from||!to)return;
     ctx.beginPath();
-    ctx.strokeStyle='rgba(47, 191, 95,.4)';
+    ctx.strokeStyle='rgba(53, 181, 106,.4)';
     ctx.lineWidth=2;
     ctx.setLineDash([6,4]);
     ctx.moveTo(from.x,from.y);
@@ -236,19 +236,19 @@ function draw(){
     ctx.lineTo(midX-8*Math.cos(angle-Math.PI/6),midY-8*Math.sin(angle-Math.PI/6));
     ctx.lineTo(midX-8*Math.cos(angle+Math.PI/6),midY-8*Math.sin(angle+Math.PI/6));
     ctx.closePath();
-    ctx.fillStyle='rgba(47, 191, 95,.6)';
+    ctx.fillStyle='rgba(53, 181, 106,.6)';
     ctx.fill();
   });
   // Nodes
   nodes.forEach(n=>{
-    const color=COLORS[n.cat]||'#2fbf5f';
+    const color=COLORS[n.cat]||'#35b56a';
     const isSelected=selectedNode&&selectedNode.id===n.id;
     // Shadow
-    ctx.shadowColor=isSelected?color:'rgba(11, 15, 11,.3)';
+    ctx.shadowColor=isSelected?color:'rgba(0, 19, 39,.3)';
     ctx.shadowBlur=isSelected?12:6;
     // Box
-    ctx.fillStyle=isSelected?'rgba(47, 191, 95,.12)':'rgba(11, 15, 11,.95)';
-    ctx.strokeStyle=isSelected?color:'rgba(47, 191, 95,.2)';
+    ctx.fillStyle=isSelected?'rgba(53, 181, 106,.12)':'rgba(0, 19, 39,.95)';
+    ctx.strokeStyle=isSelected?color:'rgba(53, 181, 106,.2)';
     ctx.lineWidth=isSelected?2:1;
     roundRect(ctx,n.x-n.w/2,n.y-n.h/2,n.w,n.h,8);
     ctx.fill();ctx.stroke();
@@ -260,17 +260,17 @@ function draw(){
     ctx.textBaseline='middle';
     ctx.fillText(n.type.toUpperCase().substring(0,3),n.x,n.y-6);
     // Label
-    ctx.fillStyle='#7f9585';
+    ctx.fillStyle='#adc4e0';
     ctx.font='10px sans-serif';
     ctx.fillText(n.name,n.x,n.y+14);
   });
   // Instructions
   if(nodes.length===0){
-    ctx.fillStyle='rgba(47, 191, 95,.3)';
+    ctx.fillStyle='rgba(53, 181, 106,.3)';
     ctx.font='16px sans-serif';
     ctx.textAlign='center';
     ctx.fillText('Drag components from the sidebar to design your architecture',canvas.width/2,canvas.height/2-10);
-    ctx.fillStyle='rgba(47, 191, 95,.15)';
+    ctx.fillStyle='rgba(53, 181, 106,.15)';
     ctx.font='12px sans-serif';
     ctx.fillText('Shift+click two nodes to connect them | Double-click to remove',canvas.width/2,canvas.height/2+16);
   }
@@ -279,7 +279,7 @@ function draw(){
 function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath()}
 
 function showNodeInfo(node){
-  document.getElementById('selected-info').innerHTML=`<div style="margin-bottom:8px"><strong style="color:#cdefd6">${node.name}</strong></div><div class="prop-row"><span class="label">Type</span><span class="value">${node.type}</span></div><div class="prop-row"><span class="label">Category</span><span class="value">${node.cat}</span></div><div class="prop-row"><span class="label">Est. Cost</span><span class="value" style="color:var(--accent)">$${node.cost}/mo</span></div><div class="prop-row"><span class="label">Connections</span><span class="value">${connections.filter(c=>c.from===node.id||c.to===node.id).length}</span></div><div style="margin-top:10px;font-size:.72rem;color:var(--text2)">Double-click to remove</div>`;
+  document.getElementById('selected-info').innerHTML=`<div style="margin-bottom:8px"><strong style="color:#f4f3ef">${node.name}</strong></div><div class="prop-row"><span class="label">Type</span><span class="value">${node.type}</span></div><div class="prop-row"><span class="label">Category</span><span class="value">${node.cat}</span></div><div class="prop-row"><span class="label">Est. Cost</span><span class="value" style="color:var(--accent)">$${node.cost}/mo</span></div><div class="prop-row"><span class="label">Connections</span><span class="value">${connections.filter(c=>c.from===node.id||c.to===node.id).length}</span></div><div style="margin-top:10px;font-size:.72rem;color:var(--text2)">Double-click to remove</div>`;
 }
 
 function updateSummary(){
@@ -399,5 +399,6 @@ function exportPNG(){
 
 draw();
 </script>
+<a id="view-src" href="https://github.com/Freddricklogan/cloud-architecture-designer" target="_blank" rel="noopener" title="View source on GitHub" style="position:fixed;right:14px;bottom:14px;z-index:99999;font:600 12px/1 -apple-system,system-ui,sans-serif;color:#001327;background:#4ce084;border-radius:999px;padding:10px 15px;text-decoration:none;box-shadow:0 3px 16px rgba(0, 19, 39,.45)">&#9654; View Source</a>
 </body>
 </html>
