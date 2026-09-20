@@ -25,7 +25,7 @@ the design exports as a Terraform or CloudFormation skeleton with every
 resource correctly typed and ordered by the edges you drew. No account, no
 backend, no install.
 
-**[Read the full case study →](docs/CASE_STUDY.md)**
+**[→ Read the full case study](docs/CASE_STUDY.md)**
 
 | Outcome | How this repo delivers it |
 | --- | --- |
