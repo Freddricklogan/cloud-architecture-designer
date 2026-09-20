@@ -39,6 +39,16 @@ export function logicalId(name, taken = new Set()) {
   return candidate;
 }
 
+/** Quote a string for HCL: backslashes first, then double quotes. Names never contain newlines (sanitizeName collapses whitespace). */
+export function hclString(value) {
+  return `"${String(value).replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
+}
+
+/** Quote a YAML scalar. Double-quoted YAML strings are a superset of JSON strings, so JSON.stringify is a correct, complete escaper. */
+export function yamlString(value) {
+  return JSON.stringify(String(value));
+}
+
 /** Stable, human-readable names for every node: Terraform and CFN forms. */
 function nameNodes(design) {
   const tf = new Set();
@@ -95,7 +105,7 @@ export function toTerraform(design) {
       `resource "${entry.terraform}" "${me.tf}" {`,
       `  # TODO: required attributes for ${entry.terraform}`,
       `  tags = {`,
-      `    Name      = "${n.name.replace(/"/g, '\\"')}"`,
+      `    Name      = ${hclString(n.name)}`,
       `    Category  = "${entry.category}"`,
       `    ManagedBy = "cloud-architecture-designer"`,
       `  }`
@@ -143,11 +153,6 @@ export function toCloudFormation(design) {
     out.push(`        Category: ${entry.category}`);
   }
   return `${out.join('\n')}\n`;
-}
-
-/** Quote a YAML scalar safely. */
-function yamlString(value) {
-  return `'${String(value).replace(/'/g, "''")}'`;
 }
 
 /** Markdown summary of a review, suitable for pasting into a design doc. */

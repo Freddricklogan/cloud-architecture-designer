@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { logicalId, terraformName, toCloudFormation, toReviewMarkdown, toTerraform } from '../src/export.js';
+import { hclString, logicalId, terraformName, toCloudFormation, toReviewMarkdown, toTerraform, yamlString } from '../src/export.js';
 import { addNode, connect, createIdFactory, emptyDesign } from '../src/graph.js';
 import { reviewDesign } from '../src/review.js';
 import { estimateCost } from '../src/cost.js';
@@ -51,9 +51,10 @@ describe('toTerraform', () => {
     expect(hcl).not.toContain('depends_on = [\n  ]');
   });
 
-  it('escapes quotes in names', () => {
-    let d = addNode(emptyDesign(), { type: 's3', name: 'my "bucket"', x: 0, y: 0 }, createIdFactory());
-    expect(toTerraform(d)).toContain('Name      = "my \\"bucket\\""');
+  it('escapes quotes and backslashes in names', () => {
+    const d = addNode(emptyDesign(), { type: 's3', name: 'my "bucket" c:\\tmp', x: 0, y: 0 }, createIdFactory());
+    expect(toTerraform(d)).toContain('Name      = "my \\"bucket\\" c:\\\\tmp"');
+    expect(hclString('a\\b')).toBe('"a\\\\b"');
   });
 });
 
@@ -68,12 +69,13 @@ describe('toCloudFormation', () => {
     expect(yaml).toContain('  ALB:\n    Type: AWS::ElasticLoadBalancingV2::LoadBalancer');
     expect(yaml).toContain('  EC2Web:\n    Type: AWS::EC2::Instance\n    DependsOn:\n      - ALB');
     expect(yaml).toContain('EC2Web2:');
-    expect(yaml).toContain("Name: 'EC2 (Web)'");
+    expect(yaml).toContain('Name: "EC2 (Web)"');
   });
 
-  it('escapes single quotes in names', () => {
-    const d = addNode(emptyDesign(), { type: 's3', name: "Bob's", x: 0, y: 0 }, createIdFactory());
-    expect(toCloudFormation(d)).toContain("Name: 'Bob''s'");
+  it('escapes quotes and backslashes in names', () => {
+    const d = addNode(emptyDesign(), { type: 's3', name: 'Bob\'s "share" \\\\srv', x: 0, y: 0 }, createIdFactory());
+    expect(toCloudFormation(d)).toContain('Name: "Bob\'s \\"share\\" \\\\\\\\srv"');
+    expect(yamlString('x\\y')).toBe('"x\\\\y"');
   });
 });
 
