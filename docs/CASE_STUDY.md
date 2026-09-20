@@ -32,7 +32,7 @@ Worth knowing: the rule set is a teaching approximation of a whiteboard review, 
 
 ## 6. Evidence
 
-Measured in continuous integration and a headless-browser smoke test: 109 unit tests passing across six files, 100% statement and 98.18% branch coverage over the six pure modules, lint and HTML validation clean, CodeQL and dependency scanning enabled. All five templates instantiate with no orphaned component and no failing rule, scoring 97, 100, 96, 100 and 100. The tour's "break it on purpose" step drops the three-tier score from 97 to 90 with one failing check; repair restores it. Security posture: Content Security Policy with `default-src 'none'`, no script from any CDN, no inline handlers or styles. The security-pillar test found four wiring gaps in my own templates first — the evidence I value most.
+Measured in continuous integration and a headless-browser smoke test: 110 unit tests passing across six files, 100% statement and 98.19% branch coverage over the six pure modules, lint and HTML validation clean, CodeQL and dependency scanning enabled. All five templates instantiate with no orphaned component and no failing rule, scoring 97, 100, 96, 100 and 100. The tour's "break it on purpose" step drops the three-tier score from 97 to 90 with one failing check; repair restores it. Security posture: Content Security Policy with `default-src 'none'`, no script from any CDN, no inline handlers or styles. The security-pillar test found four wiring gaps in my own templates first — the evidence I value most.
 
 ## 7. What it would take to run this in production
 

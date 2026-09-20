@@ -49,6 +49,11 @@ export function yamlString(value) {
   return JSON.stringify(String(value));
 }
 
+/** Escape a Markdown table cell: backslashes first, then pipes, so a name ending in a backslash cannot un-escape the pipe. */
+export function mdCell(value) {
+  return String(value).replace(/\\/g, '\\\\').replace(/\|/g, '\\|');
+}
+
 /** Stable, human-readable names for every node: Terraform and CFN forms. */
 function nameNodes(design) {
   const tf = new Set();
@@ -169,7 +174,7 @@ export function toReviewMarkdown(design, review, cost) {
     `| --- | --- | --- | --- | --- |`
   ];
   for (const f of review.findings) {
-    lines.push(`| ${f.id} | ${f.pillarLabel} | ${f.title} | ${f.status} | ${f.note.replace(/\|/g, '\\|')} |`);
+    lines.push(`| ${f.id} | ${f.pillarLabel} | ${f.title} | ${f.status} | ${mdCell(f.note)} |`);
   }
   return `${lines.join('\n')}\n`;
 }

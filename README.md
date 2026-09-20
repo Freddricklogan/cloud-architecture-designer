@@ -33,7 +33,7 @@ backend, no install.
 | A score a reviewer can defend | 0–100 over *applicable* rules only (pass 1 · warn 0.5 · fail 0); "not applicable" is a distinct state, never a free pass |
 | Reference designs that are actually references | Each of the five templates instantiates with no orphans and passes the security pillar outright — enforced in the test suite |
 | A starting point for infrastructure code | Terraform (`aws_*`) and CloudFormation (`AWS::*`) skeletons with `depends_on` / `DependsOn` from the graph; every attribute you must decide is `TODO`, none is invented |
-| Findings that survive review | 109 tests over the pure modules at 100% statement coverage; the JSON importer is fuzzed with malformed input |
+| Findings that survive review | 110 tests over the pure modules at 100% statement coverage; the JSON importer is fuzzed with malformed input |
 
 > **Scope, stated plainly.** The cost figure is a sum of round planning
 > placeholders per service, not AWS list prices — the panel says so beside the
@@ -182,16 +182,16 @@ npm run serve      # http://localhost:3000
 **Verification — the numbers this repository actually produced:**
 
 ```bash
-npm test         # Test Files 6 passed (6) · Tests 109 passed (109)
-npm run coverage # All files 100% statements · 98.18% branches
+npm test         # Test Files 6 passed (6) · Tests 110 passed (110)
+npm run coverage # All files 100% statements · 98.19% branches
 npm run lint     # eslint . — clean
 npm run validate # html-validate index.html — clean
 ```
 
 | Check | Result |
 | --- | --- |
-| Unit tests | **109 passed / 109** across 6 files |
-| Statement coverage (engine) | **100%** (branches 98.18%) |
+| Unit tests | **110 passed / 110** across 6 files |
+| Statement coverage (engine) | **100%** (branches 98.19%) |
 | ESLint | clean |
 | html-validate | clean (`no-inline-style` enforced) |
 | Headless Chrome smoke | **0 console errors**; all five tour steps change state (score 97 → 90 with 1 failing check → 97); Terraform and CloudFormation exports each emit 15 resources for the three-tier template; undo, keyboard delete, JSON import round-trip and palette Add verified; no horizontal scroll at 400 px |

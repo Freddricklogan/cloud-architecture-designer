@@ -134,7 +134,7 @@ per-category breakdown so the reader can see where the figure comes from.
   scales the backing store by `devicePixelRatio`.
 - **D3** Nodes could be dragged off-canvas and lost. `clampPosition()` keeps
   every node inside, on drag, on import and on resize.
-- **D4** No tests, no lint, no CI, no `package.json`. Now 109 Vitest tests over
+- **D4** No tests, no lint, no CI, no `package.json`. Now 110 Vitest tests over
   the pure modules at 100% statement coverage, ESLint flat config,
   html-validate, Trivy and CodeQL in CI.
 - **D5** `og:description` and the JSON-LD `description` were the literal string

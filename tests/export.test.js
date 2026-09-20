@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { hclString, logicalId, terraformName, toCloudFormation, toReviewMarkdown, toTerraform, yamlString } from '../src/export.js';
+import { hclString, logicalId, mdCell, terraformName, toCloudFormation, toReviewMarkdown, toTerraform, yamlString } from '../src/export.js';
 import { addNode, connect, createIdFactory, emptyDesign } from '../src/graph.js';
 import { reviewDesign } from '../src/review.js';
 import { estimateCost } from '../src/cost.js';
@@ -104,6 +104,13 @@ describe('toReviewMarkdown', () => {
     const rows = md.split('\n').filter((l) => /^\| [A-Z]+-\d /.test(l));
     expect(rows.length).toBe(reviewDesign(d).findings.length);
     for (const row of rows) expect((row.replace(/\\\|/g, '').match(/\|/g) || []).length).toBe(6);
+  });
+  it('escapes backslashes before pipes in table cells', () => {
+    expect(mdCell('a|b')).toBe('a\\|b');
+    expect(mdCell('c:\\|')).toBe('c:\\\\\\|');
+    const d = addNode(emptyDesign(), { type: 'alb', name: 'Edge\\|LB', x: 0, y: 0 }, createIdFactory());
+    const md = toReviewMarkdown(d, reviewDesign(d), estimateCost(d));
+    expect(md).toContain('Edge\\\\\\|LB');
   });
   it('prints n/a when nothing applies', () => {
     const d = emptyDesign();
