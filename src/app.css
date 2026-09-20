@@ -1,0 +1,168 @@
+/* Demo-specific styles. Shell tokens come from exec-shell.css. */
+
+.cad-toolbar {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 10px 12px; margin-bottom: 16px;
+}
+.cad-toolbar__group { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.cad-toolbar__group + .cad-toolbar__group { margin-left: auto; }
+.cad-toolbar label { font-size: .8rem; color: var(--muted); }
+.cad-toolbar select {
+  background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 7px 10px; font: inherit; font-size: .84rem;
+}
+
+.cad-btn {
+  padding: 7px 12px; background: var(--panel-2); border: 1px solid var(--border); color: var(--text);
+  border-radius: var(--radius-sm); font: inherit; font-size: .82rem; cursor: pointer;
+  transition: background var(--shell-speed) ease, border-color var(--shell-speed) ease;
+}
+.cad-btn:hover { background: var(--border); }
+.cad-btn:disabled { opacity: .5; cursor: not-allowed; }
+.cad-btn--primary { background: var(--accent); border-color: var(--accent); color: #07101f; font-weight: 600; }
+.cad-btn--primary:hover { background: #7bb8ff; }
+.cad-btn--danger { border-color: var(--danger); color: var(--danger); }
+.cad-btn-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+
+.cad-layout {
+  display: grid; grid-template-columns: 250px minmax(0, 1fr) 320px; gap: 16px; align-items: start;
+}
+@media (max-width: 1100px) { .cad-layout { grid-template-columns: 220px minmax(0, 1fr); } .cad-panel { grid-column: 1 / -1; } }
+@media (max-width: 720px) { .cad-layout { grid-template-columns: minmax(0, 1fr); } }
+
+.cad-palette, .cad-panel, .cad-canvas-wrap {
+  background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+}
+
+/* Palette */
+.cad-palette { padding: 6px; max-height: 720px; overflow-y: auto; }
+.cad-palette__group { padding: 8px 6px 10px; }
+.cad-palette__group + .cad-palette__group { border-top: 1px solid var(--border); }
+.cad-palette__title { margin: 0 0 6px; font-size: .72rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.cad-palette__item {
+  display: grid; grid-template-columns: 34px minmax(0, 1fr) 28px; gap: 8px; align-items: center;
+  padding: 5px 6px; border-radius: var(--radius-sm); cursor: grab; user-select: none;
+}
+.cad-palette__item:hover { background: var(--panel-2); }
+.cad-palette__item:active { cursor: grabbing; }
+.cad-palette__icon {
+  display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 30px;
+  border-radius: 6px; font-size: .7rem; font-weight: 700; color: var(--cat, var(--accent));
+  background: color-mix(in srgb, var(--cat, var(--accent)) 18%, transparent);
+}
+.cad-palette__text { display: flex; flex-direction: column; min-width: 0; }
+.cad-palette__name { font-size: .82rem; }
+.cad-palette__desc { font-size: .68rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cad-palette__add {
+  width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border); background: var(--panel-2);
+  color: var(--text); font: inherit; font-size: 1rem; line-height: 1; cursor: pointer;
+}
+.cad-palette__add:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Canvas */
+.cad-canvas-wrap { position: relative; min-height: 560px; display: flex; flex-direction: column; }
+#canvas { flex: 1; width: 100%; height: 560px; display: block; border-radius: var(--radius) var(--radius) 0 0; cursor: crosshair; touch-action: none; }
+#canvas:focus-visible { outline-offset: -2px; }
+.cad-status {
+  margin: 0; padding: 8px 12px; border-top: 1px solid var(--border);
+  font-size: .78rem; color: var(--muted); min-height: 2.2em;
+}
+
+/* Right panel */
+.cad-panel { display: flex; flex-direction: column; }
+.cad-panel__section { padding: 14px; }
+.cad-panel__section + .cad-panel__section { border-top: 1px solid var(--border); }
+.cad-panel__title { margin: 0 0 10px; font-size: .74rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.cad-muted { margin: 0; font-size: .8rem; color: var(--muted); }
+
+.cad-props, .cad-summary { margin: 0; }
+.cad-prop, .cad-summary__row { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; font-size: .82rem; }
+.cad-prop dt, .cad-summary__label { color: var(--muted); }
+.cad-prop dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; word-break: break-all; }
+.cad-summary__value { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.cad-cost {
+  text-align: center; padding: 12px; margin-top: 8px;
+  background: var(--panel-2); border: 1px solid var(--border); border-radius: var(--radius-sm);
+}
+.cad-cost__amount { font-size: 1.5rem; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+.cad-cost__period { font-size: .72rem; color: var(--muted); }
+.cad-cost__note { margin: 8px 0 0; font-size: .7rem; color: var(--muted); line-height: 1.4; }
+.cad-cost-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+.cad-cost-row { display: grid; grid-template-columns: 84px minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: .74rem; }
+.cad-cost-label { color: var(--muted); }
+.cad-cost-bar { height: 6px; border-radius: 3px; background: var(--panel-2); position: relative; overflow: hidden; }
+.cad-cost-bar::after { content: ''; position: absolute; inset: 0; width: var(--w, 0%); background: var(--cat, var(--accent)); }
+.cad-cost-value { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* Review */
+.cad-review__head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+.cad-review__score { font-size: 2rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.cad-review__score[data-tone='ok'] { color: var(--ok); }
+.cad-review__score[data-tone='warn'] { color: var(--warn); }
+.cad-review__score[data-tone='danger'] { color: var(--danger); }
+.cad-review__score[data-tone='na'] { color: var(--muted); }
+.cad-review__of { font-size: .78rem; color: var(--muted); }
+.cad-pillars { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 5px; }
+.cad-pillar { display: grid; grid-template-columns: 150px minmax(0, 1fr) 30px; gap: 8px; align-items: center; font-size: .74rem; }
+.cad-pillar__label { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cad-pillar__track { height: 6px; border-radius: 3px; background: var(--panel-2); overflow: hidden; display: block; }
+.cad-pillar__fill { display: block; height: 100%; width: var(--w, 0%); background: var(--muted); transition: width var(--shell-speed) ease; }
+.cad-pillar__fill[data-tone='ok'] { background: var(--ok); }
+.cad-pillar__fill[data-tone='warn'] { background: var(--warn); }
+.cad-pillar__fill[data-tone='danger'] { background: var(--danger); }
+.cad-pillar__score { text-align: right; font-variant-numeric: tabular-nums; }
+.cad-findings { list-style: none; margin: 0; padding: 0; max-height: 360px; overflow-y: auto; }
+.cad-finding { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 8px; padding: 6px 0; border-top: 1px solid var(--border); }
+.cad-finding__icon {
+  width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  font-size: .68rem; font-weight: 700; margin-top: 2px;
+}
+.cad-finding--pass .cad-finding__icon { background: color-mix(in srgb, var(--ok) 20%, transparent); color: var(--ok); }
+.cad-finding--warn .cad-finding__icon { background: color-mix(in srgb, var(--warn) 20%, transparent); color: var(--warn); }
+.cad-finding--fail .cad-finding__icon { background: color-mix(in srgb, var(--danger) 20%, transparent); color: var(--danger); }
+.cad-finding--na .cad-finding__icon { background: var(--panel-2); color: var(--muted); }
+.cad-finding--na { opacity: .6; }
+.cad-finding__body { display: flex; flex-direction: column; min-width: 0; }
+.cad-finding__title { font-size: .8rem; }
+.cad-finding__note { font-size: .7rem; color: var(--muted); line-height: 1.4; }
+
+/* Selected + inventory */
+.cad-selected__name { margin: 0 0 6px; font-weight: 600; }
+.cad-inventory { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; max-height: 300px; overflow-y: auto; }
+.cad-inventory__item {
+  width: 100%; display: grid; grid-template-columns: 36px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 8px;
+  text-align: left; padding: 5px 6px; background: transparent; border: 1px solid transparent; border-radius: var(--radius-sm);
+  color: var(--text); font: inherit; cursor: pointer;
+}
+.cad-inventory__item:hover { background: var(--panel-2); }
+.cad-inventory__item.is-selected { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.cad-inventory__abbr {
+  grid-row: 1 / span 2; display: inline-flex; align-items: center; justify-content: center; height: 30px;
+  border-radius: 6px; font-size: .68rem; font-weight: 700; color: var(--cat, var(--accent));
+  background: color-mix(in srgb, var(--cat, var(--accent)) 18%, transparent);
+}
+.cad-inventory__name { font-size: .8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cad-inventory__meta { font-size: .68rem; color: var(--muted); }
+
+/* Export dialog */
+.cad-dialog {
+  background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 0; width: min(880px, calc(100vw - 32px)); max-height: calc(100vh - 32px);
+}
+.cad-dialog::backdrop { background: rgba(3, 7, 18, .7); }
+.cad-dialog__inner { display: flex; flex-direction: column; max-height: calc(100vh - 34px); }
+.cad-dialog__head { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.cad-dialog__head h2 { margin: 0; font-size: 1rem; flex: 1; }
+.cad-dialog pre {
+  margin: 0; padding: 14px 16px; overflow: auto; flex: 1; min-height: 200px;
+  font-family: var(--shell-mono); font-size: .76rem; line-height: 1.5; color: var(--text); background: var(--bg);
+  border-radius: 0 0 var(--radius) var(--radius); white-space: pre; tab-size: 2;
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cad-btn, .cad-pillar__fill { transition: none; }
+}
