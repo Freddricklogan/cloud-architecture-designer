@@ -1,3 +1,4 @@
+import { tokens } from './exec-shell.js';
 /**
  * Canvas renderer. Reads a design and draws it; never mutates state. Uses the
  * shell's dark tokens so the canvas matches the page, and scales for the
@@ -9,26 +10,26 @@ import { getEntry } from './catalog.js';
 import { NODE_HEIGHT, NODE_WIDTH } from './graph.js';
 
 export const CATEGORY_COLOURS = {
-  compute: '#d29922',
-  storage: '#3fb950',
-  database: '#58a6ff',
-  networking: '#d2a8ff',
-  security: '#f85149',
-  integration: '#39c5cf',
-  operations: '#8b98b0'
+  compute: tokens().warn,
+  storage: tokens().ok,
+  database: tokens().accent,
+  networking: tokens().series[4],
+  security: tokens().danger,
+  integration: tokens().series[3],
+  operations: tokens().muted
 };
 
 const TOKENS = {
   grid: 'rgba(139, 152, 176, 0.08)',
   edge: 'rgba(139, 152, 176, 0.55)',
   edgeArrow: 'rgba(139, 152, 176, 0.9)',
-  nodeFill: '#16223a',
-  nodeSelected: '#1f2a44',
-  nodeBorder: '#22304d',
-  label: '#e6edf3',
-  muted: '#8b98b0',
+  nodeFill: tokens().panel2,
+  nodeSelected: tokens().panel2,
+  nodeBorder: tokens().border,
+  label: tokens().text,
+  muted: tokens().muted,
   hint: 'rgba(139, 152, 176, 0.7)',
-  pending: '#58a6ff'
+  pending: tokens().accent
 };
 
 /**
