@@ -20,8 +20,8 @@
 }
 .cad-btn:hover { background: var(--border); }
 .cad-btn:disabled { opacity: .5; cursor: not-allowed; }
-.cad-btn--primary { background: var(--accent); border-color: var(--accent); color: #07101f; font-weight: 600; }
-.cad-btn--primary:hover { background: #7bb8ff; }
+.cad-btn--primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
+.cad-btn--primary:hover { background: var(--accent-2); }
 .cad-btn--danger { border-color: var(--danger); color: var(--danger); }
 .cad-btn-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
 

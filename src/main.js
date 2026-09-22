@@ -251,6 +251,7 @@ function importJson(file) {
 /* ------------------------------------------------------------------ shell */
 
 const shell = mountExecShell({
+  theme: 'graphite',
   title: 'Cloud Architecture Designer',
   tagline:
     'Sketch an AWS architecture, review it against six Well-Architected pillars with topology-aware rules, and export a Terraform or CloudFormation skeleton — entirely in the browser.',
