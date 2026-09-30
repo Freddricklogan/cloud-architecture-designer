@@ -195,9 +195,15 @@ function undo() {
 
 /* ---------------------------------------------------------------- exports */
 
-function openExport(title, filename, body) {
+/**
+ * Open the export dialog. The tour opens it non-modally: a modal dialog makes the rest of the
+ * page inert, which hid the tour card and its Finish button behind it.
+ */
+function openExport(title, filename, body, { modal = true } = {}) {
   renderExport(dom.dialog, { title, filename, body });
-  if (typeof dom.dialog.showModal === 'function') dom.dialog.showModal();
+  if (dom.dialog.open) dom.dialog.close();
+  if (modal && typeof dom.dialog.showModal === 'function') dom.dialog.showModal();
+  else if (typeof dom.dialog.show === 'function') dom.dialog.show();
   else dom.dialog.setAttribute('open', '');
 }
 
@@ -307,12 +313,16 @@ const shell = mountExecShell({
       }
     },
     {
-      selector: '#btn-export-tf',
+      selector: '#export-dialog',
       title: 'Export a Terraform skeleton',
       body: 'Every component becomes a correctly typed resource, ordered by the design\'s edges through depends_on. The attributes you must decide are marked TODO — nothing is invented.',
-      action: () => openExport('Terraform skeleton', 'main.tf', toTerraform(state.design))
+      action: () => openExport('Terraform skeleton', 'main.tf', toTerraform(state.design), { modal: false })
     }
-  ]
+  ],
+  // The tour's export dialog closes with the tour (Finish, Close, Escape or a backdrop click).
+  onTourEnd: () => {
+    if (dom.dialog.open) dom.dialog.close();
+  }
 });
 
 /* ----------------------------------------------------------------- wiring */
