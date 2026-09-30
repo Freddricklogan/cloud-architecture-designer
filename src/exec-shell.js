@@ -167,6 +167,7 @@ export function mountExecShell(config) {
     badges = defaultBadges(),
     kpis = [],
     tour = [],
+    onTourEnd,
     mainSelector = '#demo-root',
     theme,
     accent
@@ -199,7 +200,7 @@ export function mountExecShell(config) {
   if (strip) header.after(strip);
   document.body.append(footer);
 
-  const tourApi = buildTour(tour, tourBtn);
+  const tourApi = buildTour(tour, tourBtn, onTourEnd);
   if (!tour.length) tourBtn.hidden = true;
 
   const api = {
@@ -329,7 +330,7 @@ function buildFooter({ repo, pagesUrl }) {
 /* Tour                                                                       */
 /* -------------------------------------------------------------------------- */
 
-function buildTour(steps, tourBtn) {
+function buildTour(steps, tourBtn, onTourEnd) {
   if (!steps.length) {
     return { start() {}, stop() {}, destroy() {} };
   }
@@ -513,6 +514,7 @@ function buildTour(steps, tourBtn) {
     if (!open) return;
     open = false;
     backdrop.hidden = true;
+    if (typeof onTourEnd === 'function') onTourEnd();
     if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
   }
 
